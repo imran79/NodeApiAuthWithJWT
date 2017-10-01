@@ -5,13 +5,11 @@ const debug = require("debug");
 const App_1 = require("./App");
 debug('ts-express:server');
 const port = parseInt(process.env.PORT, 10) || 5000;
-//const port = normalizePort(process.env.PORT || 3000);
 App_1.default.set('port', port);
 const server = http.createServer(App_1.default);
 App_1.default.listen(port, () => {
     console.log("Node app is running at localhost:" + port);
 });
-//server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 function normalizePort(portNum) {

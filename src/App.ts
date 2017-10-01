@@ -5,17 +5,18 @@ import * as logger from 'morgan';
 import BaseRoute from './config/BaseRoute'
 
 class App {
-  public express
+  public exps
 
   constructor() {
-    this.express = BaseRoute.getRoutes
-    this.express.use(bodyparser.json);
-    this.express.use(logger('dev'));
-
-
+    var app = express();
+    app.use(bodyparser.urlencoded({ extended: true }));
+    app.use(bodyparser.json());
+    app.use(logger('dev'));
+    app.use(BaseRoute.getRoutes);
+    this.exps = app;
   }
 
 
 }
 
-export default new App().express
+export default new App().exps
